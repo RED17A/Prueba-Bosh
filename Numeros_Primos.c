@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-
+//FUNCION EN LA QUE SE OBTIENEN LOS NUMEROS PRIMOS DESDE EL 0 HASTA EL VALOR DEL LIMITE
 void primos(int limite) {
     bool num_prim(int n) {
         if (n <= 1) return false;
@@ -22,13 +22,13 @@ void primos(int limite) {
     }
     printf("\n");
 }
-
+//DEFINICION DE UN PUNTERO A FUNCION
 typedef void (*primos_puntero)(int);
 
 
 
 int main() {
-    // Reservar 1KB de memoria
+    // RESERVA DE LA MEMORIA
     size_t mem = 1024;
     void *memoria = malloc(mem);
     if (memoria == NULL) {
@@ -36,27 +36,27 @@ int main() {
         return 1;
     }
 
-    // Obtener el puntero a la función primos
+    //PUNTERO A LA FUNCION "PRIMOS"
     primos_puntero pun_prim = &primos;
 
-    // Copiar la función primos al espacio de memoria reservado
+    // Se utiliza "memcpy" para copiar la funcion "primos" al espacio de memoria reservado
     memcpy(memoria, &pun_prim, sizeof(pun_prim));
 
-    // Obtener un puntero a la función copiada
+    //Puntero para recuperar la funcion "primos" copiada en la memoria
     primos_puntero ptr_prim;
     memcpy(&ptr_prim, memoria, sizeof(ptr_prim));
 
-
-    int limite =0; // Ejemplo de límite para imprimir los números primos
+    //INTERACCION CON EL USUARIO
+    int limite =0;
     printf("VALOR DEL LIMITE:\n");
     scanf("%d",&limite);
 
-    // Llamar la función primos desde el espacio de memoria reservado
+    // EJECUCION DESDE LA MEMORIA RAM
     ptr_prim(limite);
 
 
 
-    // Liberar la memoria reservada
+    // Liberar la memoria
     free(memoria);
 
     return 0;
