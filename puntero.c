@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 
+//FUNCION PARA IMPRIMIR NUMEROS PRIMOS
 void primos(int limite) {
     bool num_prim(int n) {
         if (n <= 1) return false;
@@ -24,6 +25,7 @@ void primos(int limite) {
 }
 
 int main(){
+//CREAMOS UN PUNTERO A FUNCION PARA MANDAR A LLAMAR LA FUNCION "primos"
 void (*funcion)(int);
 funcion=&primos;
 int valor=0;
