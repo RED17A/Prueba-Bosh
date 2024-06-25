@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 int main() {
+    //FUNCION PARA RESERVAR MEMORIA CON LA FUNCION MALLOC
     char *array = (char *)malloc(1024 * sizeof(char));
 
     if (array == NULL) {
